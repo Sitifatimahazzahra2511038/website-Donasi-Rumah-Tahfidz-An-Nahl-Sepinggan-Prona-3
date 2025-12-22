@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - An-Nahl Tahfidz House</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e8f7e4 0%, #f1f9ed 50%, #e5f7e8 100%);
+      color: #2d4a3e;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .login-container {
+      background: white;
+      border-radius: 30px;
+      box-shadow: 0 8px 40px rgba(120, 200, 130, 0.2);
+      padding: 3rem;
+      max-width: 450px;
+      width: 100%;
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .login-header img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    .login-header h1 {
+      font-size: 1.8rem;
+      color: #2d5f4d;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .login-header p {
+      color: #4a6b5d;
+      font-size: 0.95rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      color: #2d5f4d;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      border: 2px solid #c1f7d5;
+      border-radius: 15px;
+      background: #f8fdf9;
+      font-size: 1rem;
+      color: #2d4a3e;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    .form-group input:focus {
+      border-color: #85e6a3;
+      background: white;
+      box-shadow: 0 0 0 4px rgba(133, 230, 163, 0.1);
+    }
+
+    .form-group input::placeholder {
+      color: #a0c4b4;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, #85e6a3 0%, #a7f3b5 100%);
+      border: none;
+      border-radius: 15px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(133, 230, 163, 0.3);
+      margin-top: 1rem;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(133, 230, 163, 0.4);
+    }
+
+    .login-btn:active {
+      transform: translateY(0);
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    .back-link a {
+      color: #3d6b59;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .back-link a:hover {
+      color: #2d5f4d;
+    }
+
+    @media (max-width: 500px) {
+      .login-container {
+        padding: 2rem 1.5rem;
+      }
+
+      .login-header h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-container">
+  <div class="login-header">
+    <img src="Foto Denah/Logo An-Nahl.jpg" alt="An-Nahl Logo">
+    <h1>Login</h1>
+    <p>Masuk ke An-Nahl Tahfidz House</p>
+  </div>
+
+  <form id="loginForm" onsubmit="handleLogin(event)">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input 
+        type="text" 
+        id="username" 
+        name="username" 
+        placeholder="Masukkan username"
+        required
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input 
+        type="password" 
+        id="password" 
+        name="password" 
+        placeholder="Masukkan password"
+        required
+      >
+    </div>
+
+    <button type="submit" class="login-btn">Masuk</button>
+  </form>
+
+
+<script>
+  function handleLogin(event) {
+    event.preventDefault();
+    
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    
+    // Login sederhana (bebas, asal diisi)
+    if (username && password) {
+      // simpan status login
+      localStorage.setItem("isLogin", "true");
+      localStorage.setItem("username", username);
+
+      window.location.href = 'index.html';
+    }
+  }
+</script>
+
+</body>
+</html>
