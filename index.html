@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Siti Fatimah Az-Zahra</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e8f7e4 0%, #f1f9ed 50%, #e5f7e8 100%);
+      color: #2d4a3e;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #a7f3b5 0%, #c1f7d5 100%);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 20px rgba(120, 200, 130, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    header img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      object-fit: cover;
+    }
+
+    header h2 {
+      color: #2d5f4d;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #3d6b59;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: #2d5f4d;
+      transform: translateY(-2px);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #6fd89c;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .search-bar {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .search-bar input {
+      padding: 0.6rem 1rem;
+      border: 2px solid #b8f3d8;
+      border-radius: 25px;
+      background: white;
+      outline: none;
+      transition: all 0.3s ease;
+      color: #2d4a3e;
+    }
+
+    .search-bar input:focus {
+      border-color: #85e6a3;
+      box-shadow: 0 0 0 3px rgba(133, 230, 163, 0.1);
+    }
+
+    .search-bar button {
+      padding: 0.6rem 1.5rem;
+      background: linear-gradient(135deg, #85e6a3 0%, #a7f3b5 100%);
+      border: none;
+      border-radius: 25px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(133, 230, 163, 0.3);
+    }
+
+    .search-bar button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(133, 230, 163, 0.4);
+    }
+
+    .search-highlight {
+      background-color: #ffeb3b;
+      padding: 2px 4px;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    .search-result-info {
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      background: linear-gradient(135deg, #85e6a3 0%, #a7f3b5 100%);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(133, 230, 163, 0.4);
+      z-index: 1001;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: all 0.3s ease;
+    }
+
+    .search-result-info.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero {
+      padding: 5rem 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, #d1f5d3 0%, #c1f7d5 50%, #b8f3d8 100%);
+      margin: 2rem;
+      border-radius: 30px;
+      box-shadow: 0 8px 30px rgba(120, 200, 130, 0.15);
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      color: #2d5f4d;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #3d6b59;
+      font-weight: 300;
+    }
+
+    section {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section h3 {
+      font-size: 2rem;
+      color: #2d5f4d;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    section h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #85e6a3, #a7f3b5);
+      border-radius: 2px;
+    }
+
+    section p {
+      color: #4a6b5d;
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+
+    .big-photo {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(120, 200, 130, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .big-photo:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(120, 200, 130, 0.2);
+    }
+
+    .big-photo h4 {
+      color: #2d5f4d;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .big-photo img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .two-photo {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .two-photo img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .two-photo img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .chat-box {
+      background: linear-gradient(135deg, #f0fdf4 0%, #e8f8ed 100%);
+      border: 2px solid #c1f7d5;
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .chat-box:hover {
+      border-color: #a7f3b5;
+      box-shadow: 0 4px 15px rgba(133, 230, 163, 0.15);
+    }
+
+    .chat-box strong {
+      color: #2d5f4d;
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .chat-box p {
+      color: #4a6b5d;
+      font-style: italic;
+      margin: 0;
+    }
+
+    .donasi-btn {
+      display: inline-block;
+      padding: 0.8rem 1.8rem;
+      background: linear-gradient(135deg, #85e6a3 0%, #a7f3b5 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(133, 230, 163, 0.3);
+      margin: 0.5rem 0;
+    }
+
+    .donasi-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(133, 230, 163, 0.4);
+    }
+
+    footer {
+      background: linear-gradient(135deg, #d1f5d3 0%, #c1f7d5 100%);
+      padding: 2rem;
+      text-align: center;
+      margin-top: 3rem;
+      color: #3d6b59;
+      border-top: 3px solid #a7f3b5;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+      color: #4a6b5d;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+
+      nav {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      section {
+        padding: 2rem 1rem;
+      }
+    }
+
+    /* Budget section styling */
+    #budget-section {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(120, 200, 130, 0.1);
+    }
+
+    #budget-section p {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #e8f7e4;
+    }
+
+    #budget-section p:last-child {
+      border-bottom: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #2d5f4d;
+      margin-top: 1rem;
+    }
+
+        /* Live Chat Widget */
+    .chat-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .chat-toggle-btn {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #85e6a3 0%, #6fd89c 100%);
+      border: none;
+      box-shadow: 0 6px 25px rgba(133, 230, 163, 0.5);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .chat-toggle-btn:hover {
+      transform: scale(1.15) rotate(5deg);
+      box-shadow: 0 8px 30px rgba(133, 230, 163, 0.6);
+    }
+
+    .chat-toggle-btn:active {
+      transform: scale(1.05);
+    }
+
+    /* Added notification badge for unread messages */
+    .notification-badge {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: #ff6b6b;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
+    }
+
+.chat-window {
+  position: fixed;             
+  bottom: 90px;
+  right: 20px;
+  width: 380px;
+  max-height: calc(100vh - 140px); 
+  height: auto;                 
+  background: white;
+  border-radius: 25px;
+  box-shadow: 0 10px 60px rgba(0, 0, 0, 0.25);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideUp 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .chat-window.active {
+      display: flex;
+    }
+
+    .chat-header {
+      background: linear-gradient(135deg, #6fd89c 0%, #85e6a3 100%);
+      padding: 1.5rem;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(111, 216, 156, 0.3);
+    }
+
+    .chat-header-content {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .chat-avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .chat-info h4 {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .chat-status {
+      font-size: 0.78rem;
+      opacity: 0.95;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #d1fae5;
+      border-radius: 50%;
+      animation: blink 2s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .chat-close {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .chat-close:hover {
+      background: rgba(255, 255, 255, 0.35);
+      transform: rotate(90deg);
+    }
+
+    /* Completely redesigned chat messages area with modern bubble design */
+    .chat-messages {
+      flex: 1;
+      padding: 1.5rem;
+      overflow-y: auto;
+      background: linear-gradient(180deg, #f0fdf4 0%, #f8fef9 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .chat-messages::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .chat-messages::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .chat-messages::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #a7f3b5, #85e6a3);
+      border-radius: 10px;
+    }
+
+    .chat-messages::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #85e6a3, #6fd89c);
+    }
+
+    /* Modern chat bubble design with shadow and rounded corners */
+    .chat-message {
+      display: flex;
+      flex-direction: column;
+      max-width: 75%;
+      animation: messageSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes messageSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Admin message bubble with modern card design */
+    .chat-message.admin {
+      align-self: flex-start;
+    }
+
+    .chat-bubble {
+      padding: 1rem 1.3rem;
+      border-radius: 20px 20px 20px 5px;
+      background: white;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .chat-message.admin .chat-bubble::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: -8px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 0 12px 12px;
+      border-color: transparent transparent white transparent;
+      filter: drop-shadow(-2px 2px 2px rgba(0, 0, 0, 0.05));
+    }
+
+    /* User message bubble with gradient green background */
+    .chat-message.user {
+      align-self: flex-end;
+    }
+
+    .chat-message.user .chat-bubble {
+      background: linear-gradient(135deg, #6fd89c 0%, #85e6a3 50%, #a7f3b5 100%);
+      border-radius: 20px 20px 5px 20px;
+      box-shadow: 0 4px 18px rgba(111, 216, 156, 0.35);
+    }
+
+    .chat-message.user .chat-bubble::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: -8px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 12px 12px 0;
+      border-color: transparent #a7f3b5 transparent transparent;
+      filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.08));
+    }
+
+    .chat-author {
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+
+    .chat-message.admin .chat-author {
+      color: #2d5f4d;
+    }
+
+    .chat-message.user .chat-author {
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .chat-text {
+      margin: 0;
+      line-height: 1.6;
+      font-size: 0.95rem;
+      word-wrap: break-word;
+    }
+
+    .chat-message.admin .chat-text {
+      color: #3d6b59;
+    }
+
+    .chat-message.user .chat-text {
+      color: white;
+    }
+
+    .chat-timestamp {
+      font-size: 0.7rem;
+      margin-top: 0.5rem;
+      display: block;
+      font-weight: 500;
+    }
+
+    .chat-message.admin .chat-timestamp {
+      color: #7a9d8f;
+    }
+
+    .chat-message.user .chat-timestamp {
+      color: rgba(255, 255, 255, 0.8);
+      text-align: right;
+    }
+
+    /* Enhanced typing indicator with modern bubble style */
+    .typing-indicator {
+      align-self: flex-start;
+      max-width: 80px;
+      display: none;
+      animation: messageSlideIn 0.3s ease;
+    }
+
+    .typing-indicator.active {
+      display: flex;
+    }
+
+    .typing-indicator .chat-bubble {
+      padding: 0.9rem 1.2rem;
+      border-radius: 20px 20px 20px 5px;
+      background: white;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .typing-dots {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      height: 22px;
+    }
+
+    .typing-dots span {
+      width: 9px;
+      height: 9px;
+      background: linear-gradient(135deg, #85e6a3, #a7f3b5);
+      border-radius: 50%;
+      animation: typingBounce 1.4s infinite ease-in-out;
+    }
+
+    .typing-dots span:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .typing-dots span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .typing-dots span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes typingBounce {
+      0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.6;
+      }
+      30% {
+        transform: translateY(-12px);
+        opacity: 1;
+      }
+    }
+
+    .chat-input-area {
+      padding: 1.3rem 1.5rem;
+      background: white;
+      border-top: 2px solid #e8f7e4;
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .chat-input-area input {
+      flex: 1;
+      padding: 1rem 1.3rem;
+      border: 2px solid #c1f7d5;
+      border-radius: 25px;
+      outline: none;
+      transition: all 0.3s ease;
+      color: #2d4a3e;
+      font-size: 0.95rem;
+    }
+
+    .chat-input-area input:focus {
+      border-color: #85e6a3;
+      box-shadow: 0 0 0 4px rgba(133, 230, 163, 0.12);
+    }
+
+    .chat-send-btn {
+      padding: 1rem 1.5rem;
+      background: linear-gradient(135deg, #6fd89c 0%, #85e6a3 100%);
+      border: none;
+      border-radius: 25px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(133, 230, 163, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .chat-send-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(133, 230, 163, 0.45);
+      background: linear-gradient(135deg, #5fcf8e 0%, #7de69b 100%);
+    }
+
+    .chat-send-btn:active {
+      transform: translateY(0);
+    }
+
+    .quick-replies {
+      display: flex;
+      gap: 0.6rem;
+      padding: 0 1.5rem 1.2rem;
+      background: white;
+      flex-wrap: wrap;
+    }
+
+    .quick-reply-btn {
+      padding: 0.6rem 1.2rem;
+      background: white;
+      border: 2px solid #c1f7d5;
+      border-radius: 20px;
+      color: #3d6b59;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .quick-reply-btn:hover {
+      background: linear-gradient(135deg, #d1f5d3 0%, #c1f7d5 100%);
+      border-color: #85e6a3;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(133, 230, 163, 0.2);
+    }
+
+@media (max-width: 768px) {
+  .chat-window {
+    width: calc(100vw - 30px);
+    right: 15px;
+    max-height: calc(100vh - 120px);
+  }
+}
+
+      .chat-widget {
+        right: 20px;
+        bottom: 20px;
+      }
+
+      .chat-message {
+        max-width: 85%;
+      }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="Foto Denah/Logo An-Nahl.jpg" alt="An-Nahl Logo">
+    <h2>An-Nahl Tahfidz House</h2>
+  </div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search..." onkeypress="if(event.key==='Enter') performSearch()">
+    <button onclick="performSearch()">
+      Search
+    </button>
+  </div>
+</header>
+
+<div id="searchResultInfo" class="search-result-info"></div>
+
+<div class="hero">
+  <h1>Construction Project of An-Nahl Tahfidz House</h1>
+  <p>Building a Place for Qur'an Memorization and Islamic Education</p>
+</div>
+
+<section id="about">
+  <h3>About the Project</h3>
+  <p>
+The Qur'an is the primary source of Islamic teachings and a comprehensive guide for Muslim life, 
+encompassing spiritual, moral, and social dimensions. Teaching and memorizing the Qur'an is a noble 
+practice that preserves its authenticity and shapes strong character, especially amid modern technological 
+challenges that risk distancing younger generations from religious values. Rumah Tahfidz Al-Qur'an plays a 
+vital role as an Islamic educational institution that focuses on Qur'anic memorization while fostering discipline, 
+independence, and moral development through structured guidance and supportive facilities. As these institutions 
+continue to grow in Indonesia, challenges such as improving teacher quality, curriculum innovation, adequate facilities, 
+and effective management must be addressed to ensure consistent educational outcomes. Overall, the development of Rumah 
+Tahfidz represents a positive contribution to strengthening religious education and character building among the younger 
+generation.</p>
+</section>
+
+<section>
+  <h3>Budget Estimation</h3>
+  <div id="budget-section">
+    <p><strong>Ground Floor (Dining Room)</strong><br>5 m × 8 m = 40 m²</p>
+    <p><strong>1A Floor (Bedroom)</strong><br>5 m × 8 m = 40 m²</p>
+    <p><strong>1B Floor (Bedroom)</strong><br>5 m × 8 m = 40 m²</p>
+    <p><strong>2A Floor (Prayer Room / Musholla)</strong><br>32.5 m²</p>
+    <p><strong>2A Floor (Terrace)</strong><br>7.5 m²</p>
+    <p><strong>2B Floor (Bedroom)</strong><br>5 m × 8 m = 40 m²</p>
+    <p><strong>Staircase Area</strong><br>2.5 m × 8 m = 20 m²</p>
+    <p><strong>Total Area</strong><br>220 m²</p>
+    <p><strong>Estimated Building Cost</strong><br>Total Area × Cost per m²<br>220 m² × IDR 5,000,000 = IDR 1,100,000,000</p>
+    <p><strong>Total Building Cost:</strong><br>IDR 1,100,000,000<br>(One Billion One Hundred Million Indonesian Rupiah)</p>
+  </div>
+</section>
+
+<section id="gallery">
+  <h3>Gallery</h3>
+  <div class="big-photo">
+    <h4>Site Plan</h4>
+    <img src="Foto Denah/Denah lokasi.jpg" alt="Site Plan">
+  </div>
+  <div class="big-photo">
+    <h4>Roof</h4>
+    <img src="Foto Denah/Atap.jpg" alt="Roof Plan">
+  </div>
+  <div class="big-photo">
+    <h4>Ground Floor Plan</h4>
+    <img src="Foto Denah/Denah lantai dasar.jpg" alt="Ground Floor">
+  </div>
+  <div class="big-photo">
+    <h4>Side Elevation</h4>
+    <img src="Foto Denah/Tampak samping.jpg" alt="Side View">
+  </div>
+</section>
+
+<section>
+  <h3>Building Floor Plan</h3>
+  <div class="big-photo">
+    <h4>Floor Plan 1 and 2</h4>
+    <div class="two-photo">
+      <img src="Foto Denah/Denah lantai 1.jpg" alt="Floor 1">
+      <img src="Foto Denah/Denah lantai 2.jpg" alt="Floor 2">
+    </div>
+  </div>
+  <div class="big-photo">
+    <h4>Side Section</h4>
+    <div class="two-photo">
+      <img src="Foto Denah/Potongan samping 1.jpg" alt="Section 1">
+      <img src="Foto Denah/Potongan samping 2.jpg" alt="Section 2">
+    </div>
+  </div>
+  <div class="big-photo">
+    <h4>Interior Perspective</h4>
+    <div class="two-photo">
+      <img src="Foto Denah/Prespektif interior 1.jpg" alt="Interior 1">
+      <img src="Foto Denah/Prespektif interior 2.jpg" alt="Interior 2">
+    </div>
+  </div>
+  <div class="big-photo">
+    <h4>Rear Elevation</h4>
+    <div class="two-photo">
+      <img src="Foto Denah/Tampak belakang 1.jpg" alt="Rear View 1">
+      <img src="Foto Denah/Tampak belakang 2.jpg" alt="Rear View 2">
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3>Project Documentation Photos</h3>
+  <div class="big-photo">
+    <div class="two-photo">
+      <img src="Foto Denah/Dokumen project 1.jpg" alt="Documentation 1">
+      <img src="Foto Denah/Dokumentasi project 2.jpg" alt="Documentation 2">
+      <img src="Foto Denah/Dokumentasi project 3.jpg" alt="Documentation 3">
+      <img src="Foto Denah/Dokumentasi project 4.jpg" alt="Documentation 4">
+      <img src="Foto Denah/Dokumentasi project 5.jpg" alt="Documentation 5">
+      <img src="Foto Denah/Dokumentasi project 6.jpg" alt="Documentation 6">
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h3>Donation Information</h3>
+
+  <p>
+    📞 Phone Number:
+    <a href="tel:+62 813-5189-3188" class="donasi-btn">
+      +62 813-5189-3188
+    </a>
+  </p>
+
+  <p>
+    🏦 Donation Bank Account:
+    <a href="#" class="donasi-btn"
+       onclick="alert('No Rekening: 7179020852\nA/n. Suwartik\nBank BSI')">
+      BSI - A/n. Suwartik<br>
+      7179020852
+    </a>
+  </p>
+</section>
+
+<div class="chat-widget">
+  <button class="chat-toggle-btn" onclick="toggleChat()">
+    💬
+    <span class="notification-badge" id="notificationBadge" style="display: none;">1</span>
+  </button>
+  
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <!-- Enhanced header with avatar and status -->
+      <div class="chat-header-content">
+        <div class="chat-avatar">🏠</div>
+        <div class="chat-info">
+          <h4>An-Nahl Support</h4>
+          <div class="chat-status">
+            <span class="status-dot"></span>
+            <span>Online</span>
+          </div>
+        </div>
+      </div>
+      <button class="chat-close" onclick="toggleChat()">×</button>
+    </div>
+    
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-message admin">
+        <div class="chat-bubble">
+          <div class="chat-author">Admin</div>
+          <p class="chat-text">Assalamu’alaikum warahmatullahi wabarakatuh.Welcome to An-Nahl Tahfidz House.Let us support the next generation of Qur’an memorizers together through your best donation. 🙏</p>
+          <span class="chat-timestamp">10:30</span>
+        </div>
+      </div>
+      <div class="chat-message user">
+        <div class="chat-bubble">
+          <div class="chat-author">You</div>
+          <p class="chat-text">Bismillah, I donate with prayers...</p>
+          <span class="chat-timestamp">Saturday, 12 December 2025</span>
+        </div>
+      </div>
+      <div class="chat-message user">
+        <div class="chat-bubble">
+          <div class="chat-author">You</div>
+          <p class="chat-text">I will donate through the YouTube channel...</p>
+          <span class="chat-timestamp">Wednesday, 24 December 2025</span>
+        </div>
+      </div>
+      <!-- Typing indicator -->
+      <div class="typing-indicator" id="typingIndicator">
+        <div class="chat-bubble">
+          <div class="typing-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Added quick reply buttons -->
+    <div class="quick-replies">
+      <button class="quick-reply-btn" onclick="sendQuickReply('Donation Information')">💰 Donation Info</button>
+      <button class="quick-reply-btn" onclick="sendQuickReply('Contact')">📞 Contact</button>
+      <button class="quick-reply-btn" onclick="sendQuickReply('Programs')">📚 Programs</button>
+    </div>
+    
+    <div class="chat-input-area">
+      <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="handleEnter(event)">
+      <button class="chat-send-btn" onclick="sendMessage()">
+        Send ✈️
+      </button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p><strong>© 2025 An-Nahl Tahfidz House</strong></p>
+  <p>Building a Generation of Qur’an Memorizers with Noble Character</p>
+</footer>
+
+<script>
+  let unreadCount = 0;
+
+  function toggleChat() {
+    const chatWindow = document.getElementById('chatWindow');
+    const badge = document.getElementById('notificationBadge');
+    
+    chatWindow.classList.toggle('active');
+    
+    if (chatWindow.classList.contains('active')) {
+      unreadCount = 0;
+      badge.style.display = 'none';
+      document.getElementById('chatInput').focus();
+    }
+  }
+
+  function getCurrentTime() {
+    const now = new Date();
+    return now.getHours().toString().padStart(2, '0') + ':' + 
+           now.getMinutes().toString().padStart(2, '0');
+  }
+
+  function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const message = input.value.trim();
+    
+    if (message === '') return;
+    
+    const chatMessages = document.getElementById('chatMessages');
+    const username = sessionStorage.getItem('username') || 'Guest';
+    
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'chat-message user';
+    messageDiv.innerHTML = `
+      <div class="chat-bubble">
+        <div class="chat-author">You</div>
+        <p class="chat-text">${message}</p>
+        <span class="chat-timestamp">${getCurrentTime()}</span>
+      </div>
+    `;
+    
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    
+    input.value = '';
+    
+    const typingIndicator = document.getElementById('typingIndicator');
+    typingIndicator.classList.add('active');
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    
+    setTimeout(() => {
+      typingIndicator.classList.remove('active');
+      
+      const replyDiv = document.createElement('div');
+      replyDiv.className = 'chat-message admin';
+      
+      let replyText = 'Thank you for your message. In shaa Allah, we will follow up on your message shortly. 😊';
+      
+      // Smart replies based on keywords
+      if (message.toLowerCase().includes('donation') || message.toLowerCase().includes('donate') || message.toLowerCase().includes('contribute')) {
+        replyText = 'For donation information, please contact us at +62 813-5189-3188 or transfer to our BSI account under the name Suwartik, account number 7179020852. Jazakumullahu khairan! 🙏';
+      } else if (message.toLowerCase().includes('contact')) {
+        replyText = 'You can contact us at +62 813-5189-3188. We are happy to assist you! 📞';
+      } else if (message.toLowerCase().includes('program') || message.toLowerCase().includes('tahfidz')) {
+        replyText = 'An-Nahl Tahfidz House provides a range of Qur’an memorization programs along with Islamic character formation. 📚';
+      }
+      
+      replyDiv.innerHTML = `
+        <div class="chat-bubble">
+          <div class="chat-author">Admin</div>
+          <p class="chat-text">${replyText}</p>
+          <span class="chat-timestamp">${getCurrentTime()}</span>
+        </div>
+      `;
+      chatMessages.appendChild(replyDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      
+      const chatWindow = document.getElementById('chatWindow');
+      if (!chatWindow.classList.contains('active')) {
+        unreadCount++;
+        const badge = document.getElementById('notificationBadge');
+        badge.textContent = unreadCount;
+        badge.style.display = 'flex';
+      }
+    }, 1500);
+  }
+
+  function sendQuickReply(message) {
+    const input = document.getElementById('chatInput');
+    input.value = message;
+    sendMessage();
+  }
+
+  function handleEnter(event) {
+    if (event.key === 'Enter') {
+      sendMessage();
+    }
+  }
+
+  function performSearch() {
+    const searchInput = document.getElementById('searchInput');
+    const searchTerm = searchInput.value.trim().toLowerCase();
+    
+    // Clear previous highlights
+    clearSearchHighlights();
+    
+    if (!searchTerm) {
+      showSearchResult('Masukkan kata kunci pencarian', 'warning');
+      return;
+    }
+    
+    // Get all text content elements
+    const searchableElements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, li, span, a, button');
+    searchResults = [];
+    
+    searchableElements.forEach(element => {
+      const text = element.textContent;
+      const lowerText = text.toLowerCase();
+      
+      if (lowerText.includes(searchTerm) && element.id !== 'searchInput') {
+        searchResults.push(element);
+        
+        // Highlight the text
+        const regex = new RegExp(`(${escapeRegex(searchTerm)})`, 'gi');
+        const highlightedHTML = element.innerHTML.replace(regex, '<span class="search-highlight">$1</span>');
+        element.innerHTML = highlightedHTML;
+      }
+    });
+    
+    if (searchResults.length > 0) {
+      currentSearchIndex = 0;
+      scrollToResult(0);
+      showSearchResult(`Ditemukan ${searchResults.length} hasil untuk "${searchTerm}"`, 'success');
+    } else {
+      showSearchResult(`Tidak ada hasil untuk "${searchTerm}"`, 'warning');
+    }
+  }
+
+  function scrollToResult(index) {
+    if (searchResults[index]) {
+      searchResults[index].scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+    }
+  }
+
+  function clearSearchHighlights() {
+    const highlights = document.querySelectorAll('.search-highlight');
+    highlights.forEach(highlight => {
+      const parent = highlight.parentNode;
+      parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
+      parent.normalize();
+    });
+    searchResults = [];
+  }
+
+  function showSearchResult(message, type) {
+    const resultInfo = document.getElementById('searchResultInfo');
+    resultInfo.textContent = message;
+    resultInfo.classList.add('show');
+    
+    setTimeout(() => {
+      resultInfo.classList.remove('show');
+    }, 3000);
+  }
+
+  function escapeRegex(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const chatWindow = document.getElementById('chatWindow');
+      if (!chatWindow.classList.contains('active')) {
+        unreadCount = 1;
+        const badge = document.getElementById('notificationBadge');
+        badge.textContent = '1';
+        badge.style.display = 'flex';
+      }
+    }, 3000);
+  });
+</script>
+
+</body>
+
+<script>
+  // cek apakah sudah login
+  if (localStorage.getItem("isLogin") !== "true") {
+    // kalau belum login, paksa ke halaman login
+    window.location.href = "login.html";
+  }
+</script>
+</html>
